@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "concurrently \"npm run dev:core\" \"npm run dev:proxy\"",
+    "dev:core": "next dev -p 3000",
+    "dev:proxy": "local-ssl-proxy --key localhost-key.pem --cert localhost.pem --source 3001 --target 3000",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -19,6 +21,7 @@
     "react-dom": "17.0.2"
   },
   "devDependencies": {
+    "concurrently": "^7.0.0",
     "eslint": "8.11.0",
     "eslint-config-next": "12.1.0"
   }

@@ -118,9 +118,6 @@ function ResponsiveDrawer({ children, window }) {
       >
         <Toolbar />
         <Container>{children}</Container>
-        {/* <Typography paragraph>
-          children
-        </Typography> */}
       </Box>
     </Box>
   );

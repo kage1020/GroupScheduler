@@ -7,27 +7,20 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
-
-const rows = [
-  createData('Frozen yoghurt', 159),
-  createData('Ice cream sandwich', 237),
-  createData('Eclair', 262, 16.0),
-  createData('Cupcake', 305),
-  createData('Gingerbread'),
-];
-
 export default function BasicTable({ liff }) {
   const [results, setResult] = useState({
-    os: ''
+    os: '',
+    lang: '',
+    version: '',
+    lineVersion: '',
+    inClient: false,
+    loggedIn: false
   });
 
   useEffect(() => {
     if (!liff) return;
     if (!liff.isLoggedIn()) {
-      liff.login();
+      liff.login({redirectUri: 'http:localhost:3000/'});
     }
     setResult({
       ...results,

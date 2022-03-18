@@ -8,7 +8,10 @@ function MyApp({ Component, pageProps }) {
   useEffect(() => {
     import('@line/liff').then((liff) => {
       liff
-        .init({ liffId: process.env.NEXT_PUBLIC_LIFF_ID })
+        .init({
+          liffId: process.env.NEXT_PUBLIC_LIFF_ID,
+          // withLoginOnExternalBrowser: true,
+        })
         .then(() => {
           console.log('liff.init() done');
           setObject(liff);
