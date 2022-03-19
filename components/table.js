@@ -13,27 +13,24 @@ export default function BasicTable({ liff }) {
     lang: '',
     version: '',
     lineVersion: '',
-    inClient: false,
-    loggedIn: false
+    inClient: '',
+    loggedIn: ''
   });
 
   useEffect(() => {
     if (!liff) return;
-    if (!liff.isLoggedIn()) {
-      liff.login({redirectUri: 'http:localhost:3000/'});
-    }
+    // if (!liff.isLoggedIn()) {
+    //   liff.login({redirectUri: 'http:localhost:3000/'});
+    // }
     setResult({
-      ...results,
-      ...{
-        os: liff.getOS(),
-        lang: liff.getLanguage(),
-        version: liff.getVersion(),
-        lineVersion: `${liff.getLineVersion()}`,
-        inClient: `${liff.isInClient()}`,
-        loggedIn: `${liff.isLoggedIn()}`
-      }
+      os: liff.getOS(),
+      lang: liff.getLanguage(),
+      version: liff.getVersion(),
+      lineVersion: `${liff.getLineVersion()}`,
+      inClient: `${liff.isInClient()}`,
+      loggedIn: `${liff.isLoggedIn()}`
     })
-  }, [liff, results])
+  }, [liff])
 
   return (
     <TableContainer component={Paper}>

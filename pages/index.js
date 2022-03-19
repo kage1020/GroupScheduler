@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Drawer from '../layout/drawer'
 import Card from '../components/card'
 import Table from '../components/table'
+import Calendar from '../components/calendar';
 
 export default function Home(props) {
   const { liff, liffError } = props;
@@ -16,6 +17,9 @@ export default function Home(props) {
       <Drawer>
         <Card>
           <Table liff={liff} />
+        </Card>
+        <Card>
+          <Calendar />
         </Card>
       </Drawer>
     </>
